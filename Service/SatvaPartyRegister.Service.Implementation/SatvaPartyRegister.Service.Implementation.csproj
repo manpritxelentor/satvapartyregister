@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\SatvaPartyRegister.Utility\SatvaPartyRegister.Utility.csproj" />
+    <ProjectReference Include="..\..\Repository\SatvaPartyRegister.Repository.Contract\SatvaPartyRegister.Repository.Contract.csproj" />
+    <ProjectReference Include="..\SatvaPartyRegister.Service.Contract\SatvaPartyRegister.Service.Contract.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\SatvaPartyRegister.Data.Implementation\SatvaPartyRegister.Data.Implementation.csproj" />
+    <ProjectReference Include="..\..\Repository\SatvaPartyRegister.Repository.Contract\SatvaPartyRegister.Repository.Contract.csproj" />
+    <ProjectReference Include="..\..\Repository\SatvaPartyRegister.Repository.Implementation\SatvaPartyRegister.Repository.Implementation.csproj" />
+    <ProjectReference Include="..\..\Service\SatvaPartyRegister.Service.Implementation\SatvaPartyRegister.Service.Implementation.csproj" />
+  </ItemGroup>
+
+</Project>
