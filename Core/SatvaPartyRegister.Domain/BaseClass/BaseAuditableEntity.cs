@@ -12,5 +12,6 @@ namespace SatvaPartyRegister.Domain.BaseClass
         public DateTime? ModifiedOn { get; set; }
         public byte[] RowVersion { get; set; }
         public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

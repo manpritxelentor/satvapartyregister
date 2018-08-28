@@ -19,6 +19,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SatvaPartyRegister.Api.Gateway.Helpers;
 using SatvaPartyRegister.Dependency;
+using SatvaPartyRegister.Service.Contract.Mappings;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace SatvaPartyRegister.Api.Gateway
 {
@@ -85,8 +87,19 @@ namespace SatvaPartyRegister.Api.Gateway
                 configureOptions.SaveToken = true;
             });
 
-            services.AddAutoMapper();
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfiles(typeof(FinancialYearProfile).Assembly);
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Satva Party Register Api", Version = "v1" });
+            });
+
 
             // create a Autofac container builder
             var builder = new ContainerBuilder();
@@ -99,6 +112,9 @@ namespace SatvaPartyRegister.Api.Gateway
             builder.RegisterModule(new RepositoryModule());
             builder.RegisterModule(new ServiceModule());
             builder.RegisterModule(new CommonModule());
+
+            builder.RegisterType<IdentityHelper>()
+                .AsSelf();
 
             // build the Autofac container
             ApplicationContainer = builder.Build();
@@ -113,6 +129,12 @@ namespace SatvaPartyRegister.Api.Gateway
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Satva Party Register Api - V1");
+            });
 
             app.UseMvc();
         }

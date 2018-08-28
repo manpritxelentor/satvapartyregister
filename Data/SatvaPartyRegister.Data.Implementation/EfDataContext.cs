@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace SatvaPartyRegister.Data.Implementation
@@ -72,12 +73,25 @@ namespace SatvaPartyRegister.Data.Implementation
             base.OnModelCreating(modelBuilder);
 
             var types = typeof(CompanyEntityMap).Assembly.GetTypes()
-                .Where(w => w.BaseType != null && w.BaseType.IsGenericTypeDefinition
-                    && w.BaseType == typeof(IEntityTypeConfiguration<>)).ToArray();
+                .Where(c => c.IsClass && !c.IsAbstract && !c.ContainsGenericParameters)
+                .ToArray();
             foreach (var type in types)
             {
-                dynamic instance = Activator.CreateInstance(type);
-                modelBuilder.ApplyConfiguration(instance);
+                // use type.Namespace to filter by namespace if necessary
+                foreach (var iface in type.GetInterfaces())
+                {
+                    // if type implements interface IEntityTypeConfiguration<SomeEntity>
+                    if (iface.IsConstructedGenericType && iface.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>))
+                    {
+                        //// make concrete ApplyConfiguration<SomeEntity> method
+                        //var applyConcreteMethod = applyGenericMethod.MakeGenericMethod(iface.GenericTypeArguments[0]);
+                        //// and invoke that with fresh instance of your configuration type
+                        //applyConcreteMethod.Invoke(modelBuilder, new object[] { Activator.CreateInstance(type) });
+                        dynamic instance = Activator.CreateInstance(type);
+                        modelBuilder.ApplyConfiguration(instance);
+                        break;
+                    }
+                }
             }
         }
     }

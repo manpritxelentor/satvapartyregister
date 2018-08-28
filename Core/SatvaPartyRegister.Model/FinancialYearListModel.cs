@@ -5,8 +5,10 @@ using System.Text;
 
 namespace SatvaPartyRegister.Model
 {
-    public class FinancialYearListModel : BaseModel
+    public class FinancialYearListModel : BaseAuditableModel
     {
-
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public bool IsActive { get; set; }
     }
 }

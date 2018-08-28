@@ -19,9 +19,11 @@ namespace SatvaPartyRegister.Api.Gateway.Controllers
             _financialYearService = financialYearService;
         }
 
+        [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_financialYearService.GetAll());
+            var data = _financialYearService.GetAll().ToList();
+            return Ok(data);
         }
     }
 }

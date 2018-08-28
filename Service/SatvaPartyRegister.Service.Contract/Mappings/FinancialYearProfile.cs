@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SatvaPartyRegister.Service.Implementation.Mappings
+namespace SatvaPartyRegister.Service.Contract.Mappings
 {
     public class FinancialYearProfile : Profile
     {
