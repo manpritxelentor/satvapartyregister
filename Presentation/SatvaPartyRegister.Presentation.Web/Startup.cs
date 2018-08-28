@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
+using SatvaPartyRegister.Presentation.Web.Helpers;
+using SatvaPartyRegister.Presentation.Web.Services;
 
 namespace SatvaPartyRegister.Presentation.Web
 {
@@ -19,9 +24,10 @@ namespace SatvaPartyRegister.Presentation.Web
         }
 
         public IConfiguration Configuration { get; }
+        public ILifetimeScope ApplicationContainer { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -30,8 +36,34 @@ namespace SatvaPartyRegister.Presentation.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddMvc()
+                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            // Add Kendo UI services to the services container
+            services.AddKendo();
+
+            // create a Autofac container builder
+            var builder = new ContainerBuilder();
+
+            // read service collection to Autofac
+            builder.Populate(services);
+
+            builder.RegisterType<HttpContextAccessor>()
+                .As<IHttpContextAccessor>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<ApiClient>()
+                .WithParameter(new NamedParameter("basePath", Configuration["BaseApiPath"]))
+                .As<ApiClient>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<FinancialYearService>().AsSelf();
+
+            // build the Autofac container
+            ApplicationContainer = builder.Build();
+
+            return new AutofacServiceProvider(this.ApplicationContainer);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

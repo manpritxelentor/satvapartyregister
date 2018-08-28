@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SatvaPartyRegister.Service.Contract;
@@ -19,10 +21,11 @@ namespace SatvaPartyRegister.Api.Gateway.Controllers
             _financialYearService = financialYearService;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpPost]
+        public IActionResult Get(DataSourceRequest request)
         {
-            var data = _financialYearService.GetAll().ToList();
+            var data = _financialYearService.GetAll()
+                .ToDataSourceResult(request);
             return Ok(data);
         }
     }

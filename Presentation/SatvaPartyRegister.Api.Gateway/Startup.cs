@@ -94,6 +94,9 @@ namespace SatvaPartyRegister.Api.Gateway
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            // Add Kendo UI services to the services container
+            services.AddKendo();
+
             // Swagger
             services.AddSwaggerGen(c =>
             {
