@@ -91,19 +91,19 @@ namespace SatvaPartyRegister.Presentation.Web.Helpers
     }
 
 
-    public class Rootobject
+    public class KendoResultModel<T>
     {
-        public Datum[] Data { get; set; }
+        public T[] Data { get; set; }
         public int Total { get; set; }
         public object AggregateResults { get; set; }
         public object Errors { get; set; }
     }
 
-    public class Datum
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public bool IsActive { get; set; }
-    }
+    //public class Datum
+    //{
+    //    public int Id { get; set; }
+    //    public string Name { get; set; }
+    //    public bool IsActive { get; set; }
+    //}
 
 }

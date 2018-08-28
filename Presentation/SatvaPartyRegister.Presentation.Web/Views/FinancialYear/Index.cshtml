@@ -51,9 +51,9 @@
                 columns.Bound(w => w.Name);
                 columns.Bound(w => w.IsActive);
             })
-            .HtmlAttributes(new { style = "height: 380px;" })
+            .HtmlAttributes(new { style = "height: 320px;" })
             .Scrollable()
-            .Groupable()
+            //.Groupable()
             .Sortable()
             .Pageable(pageable => pageable
                 .Refresh(true)

@@ -28,16 +28,5 @@ namespace SatvaPartyRegister.Presentation.Web.Controllers
             var data = await _financialYearService.GetAll(request);
             return Json(data.ResponseObject);
         }
-
-        public IActionResult GetFinancialYearDemo([DataSourceRequest] DataSourceRequest request)
-        {
-            var data = Enumerable.Range(0, 5).Select(s => new FinancialYearListModel
-            {
-                Id = s,
-                Name = "Test",
-                IsActive = true
-            }).ToDataSourceResult(request);
-            return Json(data);
-        }
     }
 }
