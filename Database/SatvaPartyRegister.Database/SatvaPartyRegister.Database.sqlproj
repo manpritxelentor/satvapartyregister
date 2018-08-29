@@ -63,5 +63,8 @@
   <ItemGroup>
     <Build Include="dbo\Tables\tbl_FinancialYear.sql" />
     <Build Include="dbo\Tables\tbl_Company.sql" />
+    <Build Include="dbo\Tables\tbl_State.sql" />
+    <Build Include="dbo\Tables\tbl_Country.sql" />
+    <Build Include="dbo\Tables\tbl_AccountantAdvocate.sql" />
   </ItemGroup>
 </Project>
