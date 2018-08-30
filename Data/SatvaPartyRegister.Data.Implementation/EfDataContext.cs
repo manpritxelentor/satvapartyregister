@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using SatvaPartyRegister.Data.Contract;
 using SatvaPartyRegister.Data.Implementation.Configuration;
+using SatvaPartyRegister.Utility.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +14,13 @@ namespace SatvaPartyRegister.Data.Implementation
 {
     public class EfDataContext : DbContext, IDataContext
     {
-        public EfDataContext(DbContextOptions options)
+        private readonly ITenantProvider _tenantProvider;
+
+        public EfDataContext(DbContextOptions options
+            , ITenantProvider tenantProvider)
            : base(options)
         {
-
+            _tenantProvider = tenantProvider;
         }
 
         public Task<bool> AnyAsync<T>(Expression<Func<T, bool>> predicate) where T : class
@@ -72,7 +77,7 @@ namespace SatvaPartyRegister.Data.Implementation
         {
             base.OnModelCreating(modelBuilder);
 
-            var types = typeof(CompanyEntityMap).Assembly.GetTypes()
+            var types = typeof(TenantEntityMap).Assembly.GetTypes()
                 .Where(c => c.IsClass && !c.IsAbstract && !c.ContainsGenericParameters)
                 .ToArray();
             foreach (var type in types)

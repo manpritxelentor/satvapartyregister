@@ -11,6 +11,7 @@ namespace SatvaPartyRegister.Api.Gateway.Helpers
         {
             get
             {
+                // TODO: Pending. Will work after authentication implementation
                 return 1;
             }
         }

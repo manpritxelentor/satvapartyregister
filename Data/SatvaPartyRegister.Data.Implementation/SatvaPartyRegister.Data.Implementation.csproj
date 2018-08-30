@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\SatvaPartyRegister.Domain\SatvaPartyRegister.Domain.csproj" />
+    <ProjectReference Include="..\..\Core\SatvaPartyRegister.Utility\SatvaPartyRegister.Utility.csproj" />
     <ProjectReference Include="..\SatvaPartyRegister.Data.Contract\SatvaPartyRegister.Data.Contract.csproj" />
   </ItemGroup>
 

@@ -4,9 +4,9 @@ using SatvaPartyRegister.Domain;
 
 namespace SatvaPartyRegister.Data.Implementation.Configuration
 {
-    public class CompanyEntityMap : IEntityTypeConfiguration<CompanyEntity>
+    public class TenantEntityMap : IEntityTypeConfiguration<TenantEntity>
     {
-        public void Configure(EntityTypeBuilder<CompanyEntity> builder)
+        public void Configure(EntityTypeBuilder<TenantEntity> builder)
         {
             builder.HasKey(w => w.Id);
 

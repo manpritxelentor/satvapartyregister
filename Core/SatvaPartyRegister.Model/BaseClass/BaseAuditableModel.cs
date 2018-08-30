@@ -12,4 +12,13 @@ namespace SatvaPartyRegister.Model.BaseClass
         }
         public bool IsActive { get; set; }
     }
+
+    public abstract class BaseValidateAuditableModel : BaseValidateModel
+    {
+        public BaseValidateAuditableModel()
+        {
+            IsActive = true;
+        }
+        public bool IsActive { get; set; }
+    }
 }

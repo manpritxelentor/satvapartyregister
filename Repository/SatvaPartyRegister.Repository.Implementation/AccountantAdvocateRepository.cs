@@ -9,11 +9,11 @@ using System.Text;
 
 namespace SatvaPartyRegister.Repository.Implementation
 {
-    public class FinancialYearRepository : GenericRepository<FinancialYearEntity>
-        , IFinancialYearRepository
+    public class AccountantAdvocateRepository : GenericRepository<AccountantAdvocateEntity>
+        , IAccountantAdvocateRepository
     {
-        public FinancialYearRepository(IDataContext dataContext
-            , ITenantProvider tenantProvider)
+        public AccountantAdvocateRepository(IDataContext dataContext
+            , ITenantProvider tenantProvider) 
             : base(dataContext, tenantProvider)
         {
         }

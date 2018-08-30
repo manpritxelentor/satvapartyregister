@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SatvaPartyRegister.Domain
 {
-    public class CompanyEntity : BaseAuditableEntity
+    public class TenantEntity : BaseAuditableEntity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

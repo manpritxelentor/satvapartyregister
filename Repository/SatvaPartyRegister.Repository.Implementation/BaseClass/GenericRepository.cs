@@ -1,23 +1,26 @@
 ﻿using SatvaPartyRegister.Data.Contract;
 using SatvaPartyRegister.Domain.BaseClass;
 using SatvaPartyRegister.Repository.Contract.BaseClass;
+using SatvaPartyRegister.Utility.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SatvaPartyRegister.Repository.Implementation.BaseClass
 {
     public class GenericRepository<T> : IGenericRepository<T>
-        where T : BaseEntity
+        where T : BaseAuditableTenantEntity
     {
         private readonly IDataContext _dataContext;
+        private readonly ITenantProvider _tenantProvider;
 
-        public GenericRepository(IDataContext dataContext)
+        public GenericRepository(IDataContext dataContext
+            , ITenantProvider tenantProvider)
         {
             _dataContext = dataContext;
+            _tenantProvider  = tenantProvider;
         }
 
         public IQueryable<T> Table => _dataContext.Entities<T>();
@@ -51,11 +54,16 @@ namespace SatvaPartyRegister.Repository.Implementation.BaseClass
 
         public void Insert(T entity)
         {
+            entity.CreatedOn = DateTime.Now;
+            entity.IsActive = true;
+            entity.IsDeleted = false;
+            entity.TenantId = _tenantProvider.TenantId;
             _dataContext.Insert<T>(entity);
         }
 
         public void Update(T entity)
         {
+            entity.ModifiedOn = DateTime.Now;
             _dataContext.Update<T>(entity);
         }
     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SatvaPartyRegister.Api.Gateway.Helpers;
+using SatvaPartyRegister.Api.Gateway.Validators;
 using SatvaPartyRegister.Dependency;
 using SatvaPartyRegister.Service.Contract.Mappings;
 using Swashbuckle.AspNetCore.Swagger;
@@ -28,7 +30,6 @@ namespace SatvaPartyRegister.Api.Gateway
     {
         private const string SecretKey = "iNivDmHLpUA223sqsfhqGbMRdRj1PVkH"; // TODO: get this from somewhere secure
         private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
-
 
         public Startup(IConfiguration configuration)
         {
@@ -91,8 +92,10 @@ namespace SatvaPartyRegister.Api.Gateway
             {
                 cfg.AddProfiles(typeof(FinancialYearProfile).Assembly);
             });
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
+            services.AddMvc()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddUpdateAccountantAdvocateModelValidator>())
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // Add Kendo UI services to the services container
             services.AddKendo();

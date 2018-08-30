@@ -11,7 +11,7 @@ namespace SatvaPartyRegister.Dependency
     {
         protected override void Load(ContainerBuilder builder)
         {
-            var services = typeof(CompanyService).Assembly.GetTypes()
+            var services = typeof(AccountantAdvocateService).Assembly.GetTypes()
                 .Where(w => w.Name.EndsWith("Service")).ToArray();
 
             builder.RegisterTypes(services)

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\SatvaPartyRegister.Utility\SatvaPartyRegister.Utility.csproj" />
     <ProjectReference Include="..\..\Data\SatvaPartyRegister.Data.Contract\SatvaPartyRegister.Data.Contract.csproj" />
     <ProjectReference Include="..\SatvaPartyRegister.Repository.Contract\SatvaPartyRegister.Repository.Contract.csproj" />
   </ItemGroup>

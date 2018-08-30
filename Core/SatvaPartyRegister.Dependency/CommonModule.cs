@@ -11,6 +11,10 @@ namespace SatvaPartyRegister.Dependency
             builder.RegisterType<AutoDataMapper>()
                 .As<IDataMapper>()
                 .InstancePerLifetimeScope();
+
+            builder.RegisterType<TenantProvider>()
+                .As<ITenantProvider>()
+                .InstancePerLifetimeScope();
         }
     }
 }

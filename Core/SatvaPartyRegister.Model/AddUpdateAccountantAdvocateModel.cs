@@ -5,9 +5,11 @@ using System.Text;
 
 namespace SatvaPartyRegister.Model
 {
-    public class FinancialYearListModel : BaseAuditableModel
+    public class AddUpdateAccountantAdvocateModel : BaseValidateAuditableModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string MobileNumber { get; set; }
+        public string EmailAddress { get; set; }
     }
 }

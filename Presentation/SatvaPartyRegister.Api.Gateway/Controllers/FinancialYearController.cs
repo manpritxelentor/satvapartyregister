@@ -12,7 +12,7 @@ namespace SatvaPartyRegister.Api.Gateway.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FinancialYearController : ControllerBase
+    public class FinancialYearController : BaseController
     {
         private readonly IFinancialYearService _financialYearService;
 

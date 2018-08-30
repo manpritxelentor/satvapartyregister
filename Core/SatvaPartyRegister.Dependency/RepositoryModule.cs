@@ -14,7 +14,7 @@ namespace SatvaPartyRegister.Dependency
                 .As<IUnitOfWork>()
                 .InstancePerLifetimeScope();
 
-            var repositories = typeof(CompanyRepository).Assembly.GetTypes()
+            var repositories = typeof(AccountantAdvocateRepository).Assembly.GetTypes()
                 .Where(w => w.Name.EndsWith("Repository")).ToArray();
 
             builder.RegisterTypes(repositories)

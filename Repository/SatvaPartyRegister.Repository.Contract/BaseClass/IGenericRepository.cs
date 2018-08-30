@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SatvaPartyRegister.Repository.Contract.BaseClass
 {
     public interface IGenericRepository<T>
-        where T : BaseEntity
+        where T : BaseAuditableTenantEntity
     {
         IQueryable<T> Table { get; }
         IQueryable<T> TableNoTracking { get; }
