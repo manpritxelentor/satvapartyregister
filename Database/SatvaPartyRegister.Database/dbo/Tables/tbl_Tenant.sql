@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[tbl_Company] (
+﻿CREATE TABLE [dbo].[tbl_Tenant] (
     [TenantId]   NVARCHAR (128) NOT NULL,
     [Name]       NVARCHAR (512) NOT NULL,
     [IsActive]   BIT            CONSTRAINT [DF_tbl_Company_IsActive] DEFAULT ((1)) NOT NULL,
