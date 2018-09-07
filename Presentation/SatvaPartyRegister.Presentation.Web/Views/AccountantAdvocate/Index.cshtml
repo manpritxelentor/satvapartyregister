@@ -27,24 +27,24 @@
     </div>
 }
 
-@(Html.Kendo().Grid<SatvaPartyRegister.Presentation.Web.Models.FinancialYear.FinancialYearListModel>()
-            .Name("grid")
-            .Columns(columns =>
-            {
-                columns.Bound(w => w.Id);
-                columns.Bound(w => w.Name);
-                columns.Bound(w => w.IsActive);
-            })
-            .HtmlAttributes(new { style = "height: 320px;" })
-            .Scrollable()
-            //.Groupable()
-            .Sortable()
-            .Pageable(pageable => pageable
-                .Refresh(true)
-                .PageSizes(true)
-                .ButtonCount(5))
-            .DataSource(dataSource => dataSource
-                .Ajax()
-                .Read(read => read.Action("GetFinancialYear", "FinancialYear"))
-            )
+@(Html.Kendo().Grid<SatvaPartyRegister.Presentation.Web.Models.AccountantAdvocate.AccountantAdvocateListViewModel>()
+                .Name("grid")
+                .Columns(columns =>
+                {
+                    columns.Bound(w => w.Id);
+                    columns.Bound(w => w.Name);
+                    columns.Bound(w => w.MobileNumber);
+                    columns.Bound(w => w.EmailAddress);
+                })
+                .HtmlAttributes(new { style = "height: 320px;" })
+                .Scrollable()
+                .Sortable()
+                .Pageable(pageable => pageable
+                    .Refresh(true)
+                    .PageSizes(true)
+                    .ButtonCount(5))
+                .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .Read(read => read.Action("GetAll", "AccountantAdvocate"))
+                )
 )

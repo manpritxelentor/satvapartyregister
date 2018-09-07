@@ -59,6 +59,7 @@ namespace SatvaPartyRegister.Presentation.Web
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<FinancialYearService>().AsSelf();
+            builder.RegisterType<AccountAdvocateService>().AsSelf();
 
             // build the Autofac container
             ApplicationContainer = builder.Build();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SatvaPartyRegister.Presentation.Web.Services
 {
-    public class FinancialYearService
+    public class FinancialYearService : BaseService
     {
         private readonly ApiClient _apiClient;
 
