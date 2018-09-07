@@ -4,9 +4,9 @@ using SatvaPartyRegister.Domain;
 
 namespace SatvaPartyRegister.Data.Implementation.Configuration
 {
-    public class StateEntityMap : IEntityTypeConfiguration<StateEntity>
+    public class CountryEntityMap : IEntityTypeConfiguration<CountryEntity>
     {
-        public void Configure(EntityTypeBuilder<StateEntity> builder)
+        public void Configure(EntityTypeBuilder<CountryEntity> builder)
         {
             builder.HasKey(w => w.Id);
 
@@ -14,25 +14,21 @@ namespace SatvaPartyRegister.Data.Implementation.Configuration
                     .ValueGeneratedOnAdd();
 
             builder.Property(w => w.Code)
-                     .IsRequired()
-                     .HasMaxLength(50);
+                  .IsRequired()
+                  .HasMaxLength(50);
 
-            builder.Property(w => w.StateName)
-                     .IsRequired()
-                     .HasMaxLength(50);
+            builder.Property(w => w.Name)
+                  .IsRequired()
+                  .HasMaxLength(50);
 
             builder.Property(w => w.ShortCode)
-                     .HasMaxLength(10);
-
-            builder.Property(w => w.StateCode)
-                     .IsRequired()
-                     .HasMaxLength(4);
+                  .HasMaxLength(10);
 
             builder.Property(w => w.RowVersion)
                 .IsConcurrencyToken()
                 .IsRowVersion();
 
-            builder.ToTable("tbl_State");
+            builder.ToTable("tbl_Country");
         }
     }
 }

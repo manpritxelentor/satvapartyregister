@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SatvaPartyRegister.Domain.BaseClass;
 
 namespace SatvaPartyRegister.Domain
 {
-    class CountryEntity
+    public class CountryEntity:BaseAuditableTenantEntity
     {
+        public int Id { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public string ShortCode { get; set; }
     }
 }
