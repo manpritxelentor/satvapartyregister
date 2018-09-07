@@ -66,5 +66,8 @@
     <Build Include="dbo\Tables\tbl_Country.sql" />
     <Build Include="dbo\Tables\tbl_AccountantAdvocate.sql" />
     <Build Include="dbo\Tables\tbl_Tenant.sql" />
+    <Build Include="dbo\Tables\tbl_Lookup.sql" />
+    <Build Include="dbo\Tables\tbl_ITRegister.sql" />
+    <Build Include="dbo\Tables\tbl_Customers.sql" />
   </ItemGroup>
 </Project>
