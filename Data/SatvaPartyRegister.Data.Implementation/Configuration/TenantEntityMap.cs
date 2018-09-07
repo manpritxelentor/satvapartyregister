@@ -14,7 +14,7 @@ namespace SatvaPartyRegister.Data.Implementation.Configuration
                 .IsConcurrencyToken()
                 .IsRowVersion();
 
-            builder.ToTable("tbl_Company");
+            builder.ToTable("tbl_Tenant");
         }
     }
 }
