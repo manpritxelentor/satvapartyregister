@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Kendo.Mvc.Extensions;
+﻿using System.Threading.Tasks;
 using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc;
-using SatvaPartyRegister.Presentation.Web.Models.FinancialYear;
 using SatvaPartyRegister.Presentation.Web.Services;
 
 namespace SatvaPartyRegister.Presentation.Web.Controllers
@@ -18,7 +13,7 @@ namespace SatvaPartyRegister.Presentation.Web.Controllers
             _financialYearService = financialYearService;
         }
 
-        public IActionResult Index()
+        public IActionResult List()
         {
             return View();
         }

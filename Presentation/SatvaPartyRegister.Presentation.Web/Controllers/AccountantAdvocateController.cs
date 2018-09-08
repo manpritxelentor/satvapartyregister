@@ -17,7 +17,7 @@ namespace SatvaPartyRegister.Presentation.Web.Controllers
             _accountAdvocateService = accountAdvocateService;
         }
 
-        public IActionResult Index()
+        public IActionResult List()
         {
             return View();
         }

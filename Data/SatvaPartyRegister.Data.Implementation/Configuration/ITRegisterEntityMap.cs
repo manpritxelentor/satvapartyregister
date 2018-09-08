@@ -20,6 +20,22 @@ namespace SatvaPartyRegister.Data.Implementation.Configuration
                 .IsConcurrencyToken()
                 .IsRowVersion();
 
+            builder.HasOne(w => w.Customer)
+            .WithMany(w => w.ITRegisters)
+            .HasForeignKey(w => w.CustomerId);
+
+            builder.HasOne(w => w.FinancialYear)
+            .WithMany(w => w.ITRegisters)
+            .HasForeignKey(w => w.FinYearId);
+
+            builder.HasOne(w => w.ITReturnStatus)
+            .WithMany(w => w.ITRegisters)
+            .HasForeignKey(w => w.ITReturnStatusId);
+
+            builder.HasOne(w => w.AuditStatus)
+            .WithMany(w => w.ITRegisters1)
+            .HasForeignKey(w => w.AuditStatusId);
+
             builder.ToTable("tbl_ITRegister");
         }
     }

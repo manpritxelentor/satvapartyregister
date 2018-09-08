@@ -1,15 +1,12 @@
-﻿using SatvaPartyRegister.Domain.BaseClass;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace SatvaPartyRegister.Domain
+namespace SatvaPartyRegister.Presentation.Web.Models.Customer
 {
-    public class CustomerEntity:BaseAuditableTenantEntity
+    public class CustomerListViewModel:BaseViewModel
     {
-        public CustomerEntity()
-        {
-            ITRegisters = new List<ITRegisterEntity>();
-        }
         public int Id { get; set; }
         public int CustomerTypeId { get; set; }
         public int ReturnIntervalId { get; set; }
@@ -39,13 +36,5 @@ namespace SatvaPartyRegister.Domain
         public string VATPassword { get; set; }
         public int? AccountantId { get; set; }
         public int? AdvocateId { get; set; }
-        public virtual AccountantAdvocateEntity Accountant { get; set; }
-        public virtual AccountantAdvocateEntity Advocate { get; set; }
-        public virtual CountryEntity Country { get; set; }
-        public virtual LookupEntity CustomerType { get; set; }
-        public virtual LookupEntity ReturnInterval { get; set; }
-        public virtual StateEntity State { get; set; }
-
-        public virtual ICollection<ITRegisterEntity> ITRegisters { get; set; }
     }
 }

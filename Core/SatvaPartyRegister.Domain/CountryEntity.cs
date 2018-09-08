@@ -8,6 +8,7 @@ namespace SatvaPartyRegister.Domain
         public CountryEntity()
         {
             States = new List<StateEntity>();
+            Customers = new List<CustomerEntity>();
         }
 
         public int Id { get; set; }
@@ -15,5 +16,6 @@ namespace SatvaPartyRegister.Domain
         public string Name { get; set; }
         public string ShortCode { get; set; }
         public virtual ICollection<StateEntity> States { get; set; }
+        public virtual ICollection<CustomerEntity> Customers { get; set; }
     }
 }
