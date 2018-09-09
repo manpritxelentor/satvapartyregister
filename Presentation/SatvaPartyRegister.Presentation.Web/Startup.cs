@@ -58,10 +58,14 @@ namespace SatvaPartyRegister.Presentation.Web
                 .As<ApiClient>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<FinancialYearService>().AsSelf();
-            builder.RegisterType<CustomerService>().AsSelf();
-            builder.RegisterType<AccountAdvocateService>().AsSelf();
-            builder.RegisterType<ITRegisterService>().AsSelf();
+            var webServices = typeof(FinancialYearService).Assembly.GetTypes()
+                .Where(w => w.Name.EndsWith("Service")).ToArray(); ;
+
+            builder.RegisterTypes(webServices)
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterTypes(webServices).AsSelf();
 
             // build the Autofac container
             ApplicationContainer = builder.Build();
