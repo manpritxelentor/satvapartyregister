@@ -73,4 +73,7 @@
     <Build Include="dbo\Tables\tbl_ITRegister.sql" />
     <Build Include="dbo\Tables\tbl_Customers.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="dbo\Tables\PostDeploymentScript.sql" />
+  </ItemGroup>
 </Project>
