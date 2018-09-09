@@ -61,6 +61,7 @@ namespace SatvaPartyRegister.Presentation.Web
             builder.RegisterType<FinancialYearService>().AsSelf();
             builder.RegisterType<CustomerService>().AsSelf();
             builder.RegisterType<AccountAdvocateService>().AsSelf();
+            builder.RegisterType<ITRegisterService>().AsSelf();
 
             // build the Autofac container
             ApplicationContainer = builder.Build();
