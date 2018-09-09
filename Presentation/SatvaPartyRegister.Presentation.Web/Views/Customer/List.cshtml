@@ -28,23 +28,30 @@
 }
 
 @(Html.Kendo().Grid<SatvaPartyRegister.Presentation.Web.Models.Customer.CustomerListViewModel>()
-                .Name("grid")
-                .Columns(columns =>
-                {
-                    columns.Bound(w => w.Id);
-                    columns.Bound(w => w.PrimaryContactName);
-                    columns.Bound(w => w.ReffName);
-                })
-                .HtmlAttributes(new { style = "height: 320px;" })
-                .Scrollable()
-                //.Groupable()
-                .Sortable()
-                .Pageable(pageable => pageable
-                    .Refresh(true)
-                    .PageSizes(true)
-                    .ButtonCount(5))
-                .DataSource(dataSource => dataSource
-                    .Ajax()
-                    .Read(read => read.Action("GetAll", "Customer"))
-                )
+                        .Name("grid")
+                        .Columns(columns =>
+                        {
+                            columns.Bound(w => w.FirmName);
+                            columns.Bound(w => w.PrimaryContactName);
+                            columns.Bound(w => w.CustomerType);
+                            columns.Bound(w => w.ReffName);
+                            //columns.Bound(w => w.City);
+                            columns.Bound(w => w.MobileNumber);
+                            //columns.Bound(w => w.PanNumber);
+                            columns.Bound(w => w.AccountantName);
+                            columns.Bound(w => w.AdvocateName);
+                        })
+                        .HtmlAttributes(new { style = "height: 320px;" })
+                        .Scrollable()
+                        .Filterable()
+                    //.Groupable()
+                    .Sortable()
+                    .Pageable(pageable => pageable
+                        .Refresh(true)
+                        .PageSizes(true)
+                        .ButtonCount(5))
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .Read(read => read.Action("GetAll", "Customer"))
+                    )
 )

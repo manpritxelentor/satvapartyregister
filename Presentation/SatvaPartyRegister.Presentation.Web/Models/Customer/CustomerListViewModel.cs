@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,9 +10,18 @@ namespace SatvaPartyRegister.Presentation.Web.Models.Customer
     {
         public int Id { get; set; }
         public int CustomerTypeId { get; set; }
+
+        [DisplayName("Customer Type")]
+        public string CustomerType { get; set; }
         public int ReturnIntervalId { get; set; }
+
+        [DisplayName("Customer Name")]
         public string PrimaryContactName { get; set; }
+
+        [DisplayName("Firm Name")]
         public string FirmName { get; set; }
+
+        [DisplayName("Reff Name")]
         public string ReffName { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
@@ -19,6 +29,8 @@ namespace SatvaPartyRegister.Presentation.Web.Models.Customer
         public int StateId { get; set; }
         public int CountryId { get; set; }
         public DateTime? DateOfBirth { get; set; }
+
+        [DisplayName("Mobile Number")]
         public string MobileNumber { get; set; }
         public string EmailAddress { get; set; }
         public string AdharNumber { get; set; }
@@ -35,6 +47,12 @@ namespace SatvaPartyRegister.Presentation.Web.Models.Customer
         public string VATId { get; set; }
         public string VATPassword { get; set; }
         public int? AccountantId { get; set; }
+
+        [DisplayName("Accountant")]
+        public string AccountantName { get; set; }
         public int? AdvocateId { get; set; }
+
+        [DisplayName("Advocate")]
+        public string AdvocateName { get; set; }
     }
 }

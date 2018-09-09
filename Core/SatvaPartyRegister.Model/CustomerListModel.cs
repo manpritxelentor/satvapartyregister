@@ -7,6 +7,7 @@ namespace SatvaPartyRegister.Model
     {
         public int Id { get; set; }
         public int CustomerTypeId { get; set; }
+        public string CustomerType { get; set; }
         public int ReturnIntervalId { get; set; }
         public string PrimaryContactName { get; set; }
         public string FirmName { get; set; }
@@ -33,6 +34,8 @@ namespace SatvaPartyRegister.Model
         public string VATId { get; set; }
         public string VATPassword { get; set; }
         public int? AccountantId { get; set; }
+        public string AccountantName { get; set; }
         public int? AdvocateId { get; set; }
+        public string AdvocateName { get; set; }
     }
 }
