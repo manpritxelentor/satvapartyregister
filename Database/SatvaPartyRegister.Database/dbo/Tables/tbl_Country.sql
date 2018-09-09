@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[tbl_Country] (
-    [Id]         INT            NOT NULL,
+    [Id]         INT            IDENTITY (1, 1) NOT NULL,
     [Code]       NVARCHAR (50)  NOT NULL,
     [Name]       VARCHAR (50)   NOT NULL,
     [TenantId]   NVARCHAR (128) NOT NULL,
@@ -12,6 +12,8 @@
     CONSTRAINT [PK_tbl_Country] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_tbl_Country_tbl_Tenant] FOREIGN KEY ([TenantId]) REFERENCES [dbo].[tbl_Tenant] ([TenantId])
 );
+
+
 
 
 

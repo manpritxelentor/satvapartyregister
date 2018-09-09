@@ -1,11 +1,10 @@
 ﻿CREATE TABLE [dbo].[tbl_State] (
-    [Id]         INT            NOT NULL,
+    [Id]         INT            IDENTITY (1, 1) NOT NULL,
     [Code]       NVARCHAR (50)  NOT NULL,
     [CountryId]  INT            NOT NULL,
     [StateName]  VARCHAR (50)   NOT NULL,
     [TenantId]   NVARCHAR (128) NOT NULL,
     [ShortCode]  VARCHAR (10)   NULL,
-    [StateCode]  VARCHAR (4)    NOT NULL,
     [CreatedOn]  DATETIME       CONSTRAINT [DF_tbl_State_CreatedOn] DEFAULT (getdate()) NOT NULL,
     [CreatedBy]  INT            NULL,
     [ModifiedOn] DATETIME       NULL,
@@ -19,9 +18,10 @@
 
 
 
+
+
 GO
-CREATE UNIQUE NONCLUSTERED INDEX [IX_tbl_State_1]
-    ON [dbo].[tbl_State]([StateCode] ASC);
+
 
 
 GO
