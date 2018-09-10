@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using (Html.BeginForm("Create", "AccountantAdvocate", FormMethod.Post))
+{
+    <div class="card-panel">
+        <div class="row">
+            <div class="input-field col s12 l4">
+                @Html.TextBox("Name")
+                <label for="first_name" class="">Name</label>
+            </div>
+            <div class="input-field col s12 l4">
+                <div class="select-wrapper initialized">
+                    @(Html.Kendo().DropDownList()
+                                                                                   .Name("color")
+                                                                                   .DataTextField("Text")
+                                                                                   .DataValueField("Value")
+                                                                                   .BindTo(new List<SelectListItem>() {
+                                                                new SelectListItem() {
+                                                                Text = "Black",
+                                                                Value = "1"
+                                                                },
+                                                                new SelectListItem() {
+                                                                Text = "Orange",
+                                                                Value = "2"
+                                                                },
+                                                                new SelectListItem() {
+                                                                Text = "Grey",
+                                                                Value = "3"
+                                                                }
+                                                                                   })
+                                                                                   .Value("1")
+                                                                                   .HtmlAttributes(new { style = "width: 100%" })
+                    )
+                </div>
+                <label>Select Profile</label>
+            </div>
+            <div class="input-field col s12 l4">
+                @Html.TextBox("Ravi")
+                <label for="first_name" class="">Age</label>
+            </div>
+        </div>
+    </div>
+}

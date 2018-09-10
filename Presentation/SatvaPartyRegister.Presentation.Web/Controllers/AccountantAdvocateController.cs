@@ -27,5 +27,11 @@ namespace SatvaPartyRegister.Presentation.Web.Controllers
             var data = await _accountAdvocateService.GetAll(dataSourceRequest);
             return Json(data.ResponseObject);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
     }
 }
