@@ -20,7 +20,8 @@ namespace SatvaPartyRegister.Utility.Implementation
             get
             {
                 // TODO: Get from Header
-                return "6EC85B58-A183-4580-ABD1-0B36BF7696F3";
+                //return "6EC85B58-A183-4580-ABD1-0B36BF7696F3";
+                return "1";
             }
         }
     }

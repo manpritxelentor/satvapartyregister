@@ -38,12 +38,15 @@ namespace SatvaPartyRegister.Service.Implementation
             return _dataMapper.Map<AccountantAdvocateEntity, AddUpdateAccountantAdvocateModel>(data);
         }
 
-        public Task<int> InsertAsync(int userId, AddUpdateAccountantAdvocateModel model)
+        public async Task<AddUpdateAccountantAdvocateModel> InsertAsync(int userId, AddUpdateAccountantAdvocateModel model)
         {
             var entity = _dataMapper.Map<AddUpdateAccountantAdvocateModel, AccountantAdvocateEntity>(model);
             entity.CreatedBy = userId;
             _accountantAdvocateRepository.Insert(entity);
-            return _unitOfWork.SaveChangesAsync();
+            bool isSaved = await  _unitOfWork.SaveChangesAsync() > 0;
+            if (!isSaved)
+                return null;
+            return await GetByIdAsync(entity.Id);
         }
 
         public Task<int> UpdateAsync(int id, int userId, AddUpdateAccountantAdvocateModel model)

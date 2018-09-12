@@ -1,44 +1,31 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@using (Html.BeginForm("Create", "AccountantAdvocate", FormMethod.Post))
-{
-    <div class="card-panel">
-        <div class="row">
+@model SatvaPartyRegister.Presentation.Web.Models.AccountantAdvocate.AddUpdateAccountantAdvocateViewModel
+<div class="card-panel">
+    <div class="row">
+        @using (Html.BeginForm("Create", "AccountantAdvocate", FormMethod.Post))
+        {
             <div class="input-field col s12 l4">
-                @Html.TextBox("Name")
-                <label for="first_name" class="">Name</label>
+                @Html.TextBoxFor(w => w.Name, string.Empty, new { placeholder = string.Empty })
+                @Html.LabelFor(w => w.Name)
             </div>
             <div class="input-field col s12 l4">
-                <div class="select-wrapper initialized">
-                    @(Html.Kendo().DropDownList()
-                                                                                   .Name("color")
-                                                                                   .DataTextField("Text")
-                                                                                   .DataValueField("Value")
-                                                                                   .BindTo(new List<SelectListItem>() {
-                                                                new SelectListItem() {
-                                                                Text = "Black",
-                                                                Value = "1"
-                                                                },
-                                                                new SelectListItem() {
-                                                                Text = "Orange",
-                                                                Value = "2"
-                                                                },
-                                                                new SelectListItem() {
-                                                                Text = "Grey",
-                                                                Value = "3"
-                                                                }
-                                                                                   })
-                                                                                   .Value("1")
-                                                                                   .HtmlAttributes(new { style = "width: 100%" })
-                    )
+                @Html.TextBoxFor(w => w.MobileNumber, string.Empty, new { placeholder = string.Empty })
+                @Html.LabelFor(w => w.MobileNumber)
+            </div>
+            <div class="input-field col s12 l4">
+                @Html.TextBoxFor(w => w.EmailAddress, string.Empty, new { placeholder = string.Empty })
+                @Html.LabelFor(w => w.EmailAddress)
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
+                        Submit
+                        <i class="material-icons right">send</i>
+                    </button>
                 </div>
-                <label>Select Profile</label>
             </div>
-            <div class="input-field col s12 l4">
-                @Html.TextBox("Ravi")
-                <label for="first_name" class="">Age</label>
-            </div>
-        </div>
+        }
     </div>
-}
+</div>

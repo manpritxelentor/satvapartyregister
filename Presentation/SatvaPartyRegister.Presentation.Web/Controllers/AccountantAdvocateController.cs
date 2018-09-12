@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc;
+using SatvaPartyRegister.Presentation.Web.Models.AccountantAdvocate;
 using SatvaPartyRegister.Presentation.Web.Services;
 
 namespace SatvaPartyRegister.Presentation.Web.Controllers
@@ -29,6 +30,18 @@ namespace SatvaPartyRegister.Presentation.Web.Controllers
         }
 
         public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(AddUpdateAccountantAdvocateViewModel objModel)
+        {
+            var data = await _accountAdvocateService.CreateAccountantAdvocate(objModel);
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Edit(int id)
         {
             return View();
         }

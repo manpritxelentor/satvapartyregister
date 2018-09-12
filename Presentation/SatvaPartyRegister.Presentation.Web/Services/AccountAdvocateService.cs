@@ -18,7 +18,12 @@ namespace SatvaPartyRegister.Presentation.Web.Services
         }
         public Task<ApiResponse<KendoResultModel<AccountantAdvocateListViewModel>>> GetAll(DataSourceRequest request)
         {
-            return _apiClient.PostAsync<DataSourceRequest, KendoResultModel<AccountantAdvocateListViewModel>>("AccountantAdvocate", request);
+            return _apiClient.PostAsync<DataSourceRequest, KendoResultModel<AccountantAdvocateListViewModel>>("AccountantAdvocate/Get", request);
+        }
+
+        public Task<ApiResponse<AddUpdateAccountantAdvocateViewModel>> CreateAccountantAdvocate(AddUpdateAccountantAdvocateViewModel objModel)
+        {
+            return _apiClient.PostAsync<AddUpdateAccountantAdvocateViewModel, AddUpdateAccountantAdvocateViewModel>("AccountantAdvocate/Post",objModel);
         }
     }
 }

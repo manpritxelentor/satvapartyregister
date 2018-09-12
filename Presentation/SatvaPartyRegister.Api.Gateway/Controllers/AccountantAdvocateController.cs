@@ -33,7 +33,10 @@ namespace SatvaPartyRegister.Api.Gateway.Controllers
         [HttpPost("Post")]
         public async Task<IActionResult> Post(AddUpdateAccountantAdvocateModel addUpdateAccountantAdvocateModel)
         {
+            // INFO: We can only return class from rest api.
             var data = await _accountantAdvocateService.InsertAsync(_identityHelper.UserId, addUpdateAccountantAdvocateModel);
+            if (data == null)
+                return BadRequest("Unable to save data");
             return Ok(data);
         }
 

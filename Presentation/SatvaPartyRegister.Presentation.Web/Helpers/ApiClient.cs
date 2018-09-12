@@ -35,6 +35,17 @@ namespace SatvaPartyRegister.Presentation.Web.Helpers
             return result;
         }
 
+
+        /// <summary>
+        /// Use this method towhen you have different request and response model.
+        /// </summary>
+        /// <typeparam name="TRequest">Request: ViewModel</typeparam>
+        /// <typeparam name="TResponse">Response: ListViewModel or reponse model</typeparam>
+        /// <param name="path"></param>
+        /// <param name="model"></param>
+        /// <param name="queryString"></param>
+        /// <param name="isAnonymousCall"></param>
+        /// <returns></returns>
         public async Task<ApiResponse<TResponse>> PostAsync<TRequest, TResponse>(string path, TRequest model, Dictionary<string, string> queryString = null, bool isAnonymousCall = false)
             where TRequest : class
             where TResponse : class

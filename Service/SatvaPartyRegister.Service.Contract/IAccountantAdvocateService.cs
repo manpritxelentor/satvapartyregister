@@ -11,7 +11,7 @@ namespace SatvaPartyRegister.Service.Contract
     {
         IQueryable<AccountantAdvocateListModel> GetAll();
         Task<AddUpdateAccountantAdvocateModel> GetByIdAsync(int id);
-        Task<int> InsertAsync(int userId, AddUpdateAccountantAdvocateModel model);
+        Task<AddUpdateAccountantAdvocateModel> InsertAsync(int userId, AddUpdateAccountantAdvocateModel model);
         Task<int> UpdateAsync(int id, int userId, AddUpdateAccountantAdvocateModel model);
         Task<int> DeleteAsync(int id, int userId);
     }
